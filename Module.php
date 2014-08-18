@@ -24,8 +24,8 @@ class Module implements AutoloaderProviderInterface
             ),
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
-                    // if we're in a namespace deeper than one level we need to fix the \ in the path
-                    __NAMESPACE__ => __DIR__ . '/src/' . str_replace('\\', '/', __NAMESPACE__),
+		    // if we're in a namespace deeper than one level we need to fix the \ in the path
+                    __NAMESPACE__ => __DIR__ . '/src/' . str_replace('\\', '/' , __NAMESPACE__),
                 ),
             ),
         );
@@ -40,10 +40,10 @@ class Module implements AutoloaderProviderInterface
     {
         return array(
             'factories' => array(
-                'urlVersionHandler' => function ($sm) {
+                'urlVersionHandler' => function($sm) {
                         $config = $sm->getServiceLocator()->get('Config');
-                        $urlVersionHandlerConfig = isset($config['url-version-handler']) ? $config['url-version-handler'] : array();
-                        return new UrlVersionHandler($urlVersionHandlerConfig);
+                        $config = isset($config['url-version-handler']) ? $config['url-version-handler'] : array();
+                        return new UrlVersionHandler($config);
                     }
             )
         );
@@ -53,7 +53,7 @@ class Module implements AutoloaderProviderInterface
     {
         // You may not need to do this if you're doing it elsewhere in your
         // application
-        $eventManager = $e->getApplication()->getEventManager();
+        $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
     }
