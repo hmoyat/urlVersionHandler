@@ -1,0 +1,23 @@
+{
+    "name": "url-verion-handleer",
+    "type": "library",
+    "description": "Url Version Handler",
+    "keywords": ["url-version-handler"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Humberto Moya",
+            "email": "hmoyat@gmail.com",
+            "role": "Application Analyst"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "UrlVersionHandler\\": "src/"
+        }
+    }
+}
